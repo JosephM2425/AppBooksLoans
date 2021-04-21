@@ -1,0 +1,50 @@
+<div class="pt-5 mb-8 font-bold 2xl:w-1/2 mx-auto items-center shadow-2xl">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="pb-8 pl-8 pr-8 2xl:w-auto sm:w-48 ">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-control">
+          <%= f.label :firstName %>
+          <%= f.text_field :firstName, class:"input input-bordered h-8" %>
+        </div>
+        <div class="form-control">
+          <%= f.label :lastName %>
+          <%= f.text_field :lastName, class:"input input-bordered h-8" %>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-control">
+          <%= f.label :username %>
+          <%= f.text_field :username, class:"input input-bordered h-8" %>
+        </div>
+        <div class="form-control">
+          <%= f.label :phoneNumber %>
+          <%= f.text_field :phoneNumber, class:"input input-bordered h-8" %>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input input-bordered h-8" %>
+      </div>
+
+      <div class="form-control py-2">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"input input-bordered h-8" %>
+      </div>
+
+      <div class="form-control">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input input-bordered h-8" %>
+      </div>
+
+      <div class="form-control pt-5">
+        <%= f.submit "Sign up", class:"btn btn-primary h-8" %>
+      </div>
+      <%= render "devise/shared/links" %>
+    <% end %>
+  </div>
+</div>
