@@ -4,40 +4,40 @@
   <div class="pb-8 pl-8 pr-8 2xl:w-auto sm:w-48 ">
       <div class="grid grid-cols-2 gap-4">
         <div class="form-control">
-          <%= f.label :firstName %>
+          <%= f.label :firstName, class:"dark:text-white" %>
           <%= f.text_field :firstName, class:"input input-bordered h-8" %>
         </div>
         <div class="form-control">
-          <%= f.label :lastName %>
+          <%= f.label :lastName, class:"dark:text-white" %>
           <%= f.text_field :lastName, class:"input input-bordered h-8" %>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
         <div class="form-control">
-          <%= f.label :username %>
+          <%= f.label :username, class:"dark:text-white" %>
           <%= f.text_field :username, class:"input input-bordered h-8" %>
         </div>
         <div class="form-control">
-          <%= f.label :phoneNumber %>
+          <%= f.label :phoneNumber, class:"dark:text-white" %>
           <%= f.text_field :phoneNumber, class:"input input-bordered h-8" %>
         </div>
       </div>
 
       <div class="form-control">
-        <%= f.label :email %>
+        <%= f.label :email, class:"dark:text-white" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input input-bordered h-8" %>
       </div>
 
       <div class="form-control py-2">
-        <%= f.label :password %>
+        <%= f.label :password, class:"dark:text-white" %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em class="dark:text-white">(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
         <%= f.password_field :password, autocomplete: "new-password", class:"input input-bordered h-8" %>
       </div>
 
       <div class="form-control">
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, class:"dark:text-white" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input input-bordered h-8" %>
       </div>
 
