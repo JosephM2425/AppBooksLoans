@@ -1,0 +1,45 @@
+<div class="pt-5 mb-8 font-bold 2xl:w-1/2 mx-auto items-center shadow-2xl">
+  <%= form_with(model: current_user) do |f| %>
+  <div class="pb-8 pl-8 pr-8 2xl:w-auto sm:w-48 ">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-control">
+          <%= f.label :firstName, class:"dark:text-white" %>
+          <%= f.text_field :firstName, class:"input input-bordered h-8" %>
+        </div>
+        <div class="form-control">
+          <%= f.label :lastName, class:"dark:text-white" %>
+          <%= f.text_field :lastName, class:"input input-bordered h-8" %>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-control">
+          <%= f.label :username, class:"dark:text-white" %>
+          <%= f.text_field :username, class:"input input-bordered h-8" %>
+        </div>
+        <div class="form-control">
+          <%= f.label :phoneNumber, class:"dark:text-white" %>
+          <%= f.text_field :phoneNumber, class:"input input-bordered h-8" %>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <%= f.label :email, class:"dark:text-white" %>
+        <%= f.email_field :email, autocomplete: "email", class:"input input-bordered h-8" %>
+      </div>
+
+       <div class="form-control">
+        <%= f.label :avatar, class:"dark:text-white" %>
+        <%= f.file_field :avatar, class:"input input-bordered h-8" %>
+      </div>
+
+      <div class="form-control">
+        <%= f.label :theme, class:"dark:text-white" %>
+        <%= f.select :theme, [["Light", :light], ["Dark", :dark]], {}, class:"select select-bordered w-full max-w-xs"%>
+      </div>
+
+      <div class="form-control pt-5">
+        <%= f.submit "Update", class:"btn btn-primary h-8" %>
+      </div>
+    <% end %>
+  </div>
+</div>

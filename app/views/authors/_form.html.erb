@@ -1,32 +1,36 @@
-<%= form_with(model: author) do |form| %>
-  <% if author.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+<div class="pt-5 mb-8 font-bold 2xl:w-1/2 mx-auto items-center shadow-2xl">
+  <div class="pb-8 pl-8 pr-8 2xl:w-auto sm:w-48 ">
+    <%= form_with(model: author) do |form| %>
+      <% if author.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
 
-      <ul>
-        <% author.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% author.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :fullName %>
-    <%= form.text_field :fullName %>
+      <div class="field">
+        <%= form.label :fullName %>
+        <%= form.text_field :fullName %>
+      </div>
+
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
+
+      <div class="field">
+        <%= form.label :country %>
+        <%= form.text_field :country %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

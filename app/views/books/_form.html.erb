@@ -1,47 +1,65 @@
-<%= form_with(model: book) do |form| %>
-  <% if book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+<div class="pt-5 mb-8 font-bold 2xl:w-1/2 mx-auto items-center shadow-2xl">
+  <div class="pb-8 pl-8 pr-8 2xl:w-auto sm:w-48 ">
+    <%= form_with(model: book) do |form| %>
+      <% if book.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
-      <ul>
-        <% book.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% book.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-control">
+          <%= form.label :title, class:"dark:text-white" %>
+          <%= form.text_field :title, class:"input input-bordered h-8" %>
+        </div>
+        <div class="form-control">
+          <%= form.label :publisher, class:"dark:text-white" %>
+          <%= form.text_field :publisher, class:"input input-bordered h-8" %>
+        </div>
+      </div>
+
+      
+
+      <div class="form-control">
+        <%= form.label :description, class:"dark:text-white" %>
+        <%= form.text_area :description, class:"textarea h-24 textarea textarea-bordered" %>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-control">
+          <%= form.label :edition, class:"dark:text-white" %>
+          <%= form.number_field :edition, class:"input input-bordered h-8" %>
+        </div>
+        <div class="form-control">
+          <%= form.label :quantity, class:"dark:text-white" %>
+          <%= form.number_field :quantity, class:"input input-bordered h-8" %>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <%= form.label :isbn, class:"dark:text-white" %>
+        <%= form.text_field :isbn, class:"input input-bordered h-8" %>
+      </div>
+
+    <div class="flex w-full h-32 items-center justify-center bg-grey-lighter">
+      <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+          <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+          </svg>
+          <span class="mt-2 text-base leading-normal">Select a file</span>
+          <%= form.file_field :pdf_book, class:"hidden" %>
+      </label>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+      <div class="actions form-control pt-5">
+        <%= form.submit "Creat Book", class:"btn btn-primary h-8" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :publisher %>
-    <%= form.text_field :publisher %>
-  </div>
-
-  <div class="field">
-    <%= form.label :edition %>
-    <%= form.number_field :edition %>
-  </div>
-
-  <div class="field">
-    <%= form.label :isbn %>
-    <%= form.text_field :isbn %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

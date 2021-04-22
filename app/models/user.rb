@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :loans
   has_many :books, through: :loans
-  enum role: [ :user, :admin ]       
+  has_one_attached :avatar
+  enum role: [ :user, :admin ]
+  enum theme: [ :light, :dark ]       
   validates :firstName, :lastName, :username, presence: true
 end
