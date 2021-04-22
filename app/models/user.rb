@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :loans
+  has_many :books, through: :loans
   enum role: [ :user, :admin ]       
   validates :firstName, :lastName, :username, presence: true
 end
