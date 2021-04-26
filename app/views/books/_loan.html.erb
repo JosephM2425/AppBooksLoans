@@ -1,0 +1,37 @@
+<label for="my-modal-2" class="btn btn-secondary modal-button">open modal</label> 
+<input type="checkbox" id="my-modal-2" class="modal-toggle"> 
+<div class="modal dark:text-black" >
+<%= form_with(model: loan) do |form| %>
+    <div class="modal-box">
+        <h1 class="text-center card-title">Book Name:  </h1>
+        <div class="field">
+          <%= form.label :book_id %>
+          <%= form.select :book_id, @books.pluck(:title, :id) ,class:"input input-bordered" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :start_date %>
+          <%= form.date_select :start_date, 
+              {:order => [:day, :month, :year] ,
+              :start_year => 2021,
+              :end_year => 2021},
+              {:class => "select select-bordered "}
+          %>
+        </div>
+
+        <div class="field">
+          <%= form.label :end_date %>
+          <%= form.date_select :end_date, 
+              {:order => [:day, :month, :year] ,
+              :start_year => 2021,
+              :end_year => 2021},
+              {:class => "select select-bordered "}  %>
+        </div>
+
+        <div class="modal-action">
+            <%= form.submit 'Crear', class:"btn btn-primary" %>
+            <label for="my-modal-2" class="btn">Close</label>
+        </div>
+    </div>
+<% end %>
+</div>

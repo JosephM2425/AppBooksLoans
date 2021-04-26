@@ -1,6 +1,6 @@
 <div class="dark:text-white">
   <% @books.each do |book| %>
-    <div class="card lg:card-side bordered">
+    <div class="card lg:card-side bordered py-2">
       <figure>
         <img src="https://picsum.photos/id/1005/400/250">
       </figure> 
@@ -9,13 +9,36 @@
         <p><%= book.description %></p> 
         <div class="card-actions">
           <%= link_to 'Show', book, class:"btn btn-secondary" %> 
-          <%= link_to 'Add to my library', book, class:"btn btn-secondary" %> 
+          <%#= render 'loan', loan: @loan, books: @books %>
+
+        <%= form_with(model: @loan) do |form| %>
+        <%= form.hidden_field :book_id, value: book.id %>
+
+        <div class="field">
+          <%= form.label :start_date %>
+          <%= form.date_select :start_date, 
+              {:order => [:day, :month, :year] ,
+              :start_year => 2021,
+              :end_year => 2021},
+              {:class => "select select-bordered "}
+          %>
+        </div>
+
+        <div class="field">
+          <%= form.label :end_date %>
+          <%= form.date_select :end_date, 
+              {:order => [:day, :month, :year] ,
+              :start_year => 2021,
+              :end_year => 2021},
+              {:class => "select select-bordered "}  %>
+        </div>
+            <%= form.submit 'Crear', class:"btn btn-primary" %>
+    <% end %> 
         </div>
       </div>
     </div>
   <% end %>
 
-  <br>
 
   <div class="btn-group sm:w-1/2 ">
     <button class="btn btn-secondary">Previous Page</button> 

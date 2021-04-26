@@ -4,6 +4,7 @@ class LoansController < ApplicationController
   # GET /loans or /loans.json
   def index
     @loans = Loan.all
+    @loan = Loan.new
   end
 
   # GET /loans/1 or /loans/1.json
@@ -21,7 +22,7 @@ class LoansController < ApplicationController
 
   # POST /loans or /loans.json
   def create
-    @loan = Loan.new(loan_params)
+    @loan = Loan.new(loan_params.merge(user: current_user))
 
     respond_to do |format|
       if @loan.save
@@ -64,6 +65,6 @@ class LoansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def loan_params
-      params.require(:loan).permit(:user_id, :book_id, :start_date, :end_date, :active)
+      params.require(:loan).permit(:book_id, :start_date, :end_date)
     end
 end
