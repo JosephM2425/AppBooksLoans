@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       redirect_back(fallback_location: root_path)
+      #format.js
     else 
       redirect_to profile_path, notice: "values already exists"
     end

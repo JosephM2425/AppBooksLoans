@@ -4,4 +4,5 @@ class Book < ApplicationRecord
     has_many :users, through: :loans
 
     has_one_attached :pdf_book
+    has_one_attached :cover
 end

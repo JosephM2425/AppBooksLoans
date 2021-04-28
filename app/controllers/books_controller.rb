@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_authors, only: %i[new edit]
 
   # GET /books or /books.json
   def index
@@ -63,8 +64,12 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
     end
 
+    def set_authors
+      @authors = Author.all
+    end
+
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :description, :publisher, :edition, :isbn, :quantity, :pdf_book)
+      params.require(:book).permit(:title, :description, :publisher, :edition, :isbn, :quantity, :pdf_book, :cover, author_ids: [])
     end
 end

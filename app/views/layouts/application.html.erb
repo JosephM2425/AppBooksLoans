@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html class="<%= current_user.dark? && 'dark' %>">
+<% if user_signed_in? %>
+  <html class=" <%= current_user.dark? && 'dark'%> ">
+<% else %>
+  <html>
+<% end %>
   <head>
     <title>AppBookRepository</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">

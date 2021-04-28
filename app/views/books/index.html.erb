@@ -1,41 +1,49 @@
 <div class="dark:text-white">
   <% @books.each do |book| %>
-    <div class="card lg:card-side bordered py-2">
-      <figure>
-        <img src="https://picsum.photos/id/1005/400/250">
-      </figure> 
+    <div class="card lg:card-side  bordered py-2">
+      <div class="bg-cover lg:h-26 lg:w-56 flex-none image-full">
+        <figure class="">
+          <% if book.cover.attached? %>
+            <%= image_tag(book.cover) %>
+          <% else %>
+            <img src="https://picsum.photos/id/1005/208/270">
+          <% end %>
+        </figure>
+      </div> 
       <div class="card-body">
         <h2 class="card-title"><%= book.title %></h2> 
         <p><%= book.description %></p> 
         <div class="card-actions">
-          <%= link_to 'Show', book, class:"btn btn-secondary" %> 
-          <%#= render 'loan', loan: @loan, books: @books %>
-
-        <%= form_with(model: @loan) do |form| %>
-        <%= form.hidden_field :book_id, value: book.id %>
-
-        <div class="field">
-          <%= form.label :start_date %>
-          <%= form.date_select :start_date, 
-              {:order => [:day, :month, :year] ,
-              :start_year => 2021,
-              :end_year => 2021},
-              {:class => "select select-bordered "}
-          %>
-        </div>
-
-        <div class="field">
-          <%= form.label :end_date %>
-          <%= form.date_select :end_date, 
-              {:order => [:day, :month, :year] ,
-              :start_year => 2021,
-              :end_year => 2021},
-              {:class => "select select-bordered "}  %>
-        </div>
-            <%= form.submit 'Crear', class:"btn btn-primary" %>
-    <% end %> 
+        <%= link_to 'Show', book, class:"btn btn-secondary" %>
         </div>
       </div>
+      <div class="px-5 py-3 flex-none ">
+        <%= form_with(model: @loan) do |form| %>
+          <%= form.hidden_field :book_id, value: book.id %>
+
+          <div class="field">
+            <%= form.label :start_date %>
+            <br>
+            <%= form.date_select :start_date, 
+                {:order => [:day, :month, :year] ,
+                :start_year => 2021,
+                :end_year => 2021},
+                {:class => "select select-bordered dark:text-black"}
+            %>
+          </div>
+
+          <div class="field">
+            <%= form.label :end_date %>
+             <br>
+            <%= form.date_select :end_date, 
+                {:order => [:day, :month, :year] ,
+                :start_year => 2021,
+                :end_year => 2021},
+                {:class => "select select-bordered dark:text-black"}  %>
+          </div>
+          <%= form.submit 'ADD TO MY LIBRARY', class:"btn btn-primary w-full lg:my-5" %>
+          <% end %> 
+        </div>
     </div>
   <% end %>
 

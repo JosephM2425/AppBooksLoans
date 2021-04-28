@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :my_loans, only: %i[ index show ]
   resources :loans
   resources :books
   resources :authors
@@ -6,5 +7,4 @@ Rails.application.routes.draw do
   resources :users, only: %i[ update ]
   get 'profile', to: "users#edit"
   root 'static#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
