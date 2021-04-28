@@ -1,7 +1,5 @@
-<div class="flex flex-row w-full">
-  <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-    Content
-  </div> 
-  <div class="divider divider-vertical"></div> 
-  <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">content</div>
-</div>
+<% if @loan.user == current_user and  @loan.active == true %>
+    <h1>HOLA</h1>
+<% else %>
+    <h2>NO TIENE ACCESO A ESTE PRESTAMO</h2>
+<% end %>

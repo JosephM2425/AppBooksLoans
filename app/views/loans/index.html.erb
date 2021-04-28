@@ -17,8 +17,8 @@
   <tbody>
     <% @loans.each do |loan| %>
       <tr>
-        <td><%= loan.user_id %></td>
-        <td><%= loan.book_id %></td>
+        <td><%= loan.user.firstName + " " + loan.user.lastName %></td>
+        <td><%= loan.book.title %></td>
         <td><%= loan.start_date %></td>
         <td><%= loan.end_date %></td>
         <td><%= loan.active %></td>
