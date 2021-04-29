@@ -1,5 +1,9 @@
 <% if @loan.user == current_user and  @loan.active == true %>
-    <h1>HOLA</h1>
+    <%# @loan.book.pdf_book %>
+    <% image_tag @loan.book.pdf_book.preview(
+        resize_to_fit: [1000, 1000]
+    ) %>
+    <%# @reader.page_count %>
 <% else %>
     <h2>NO TIENE ACCESO A ESTE PRESTAMO</h2>
 <% end %>
