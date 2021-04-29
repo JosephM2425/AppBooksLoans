@@ -1,5 +1,10 @@
 <% if @loan.user == current_user and  @loan.active == true %>
-    <h1>HOLA</h1>
+
+    <% reader = PDF::Reader.new(@loan.book.process_attachment) %>
+    <% reader.pages.each do |page| %>
+        <p> <%= page.text %> </p>
+    <% end %>
+
 <% else %>
     <h2>NO TIENE ACCESO A ESTE PRESTAMO</h2>
 <% end %>
