@@ -10,4 +10,14 @@ class User < ApplicationRecord
   enum role: [ :user, :admin ]
   enum theme: [ :light, :dark ]       
   validates :firstName, :lastName, :username, presence: true
+
+
+  def fullName()
+    return self.firstName + " " + self.lastName
+  end
+
+  def active_admin?
+    role == :admin
+  end
+
 end

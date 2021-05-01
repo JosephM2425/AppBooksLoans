@@ -39,6 +39,9 @@ Rails.application.configure do
   # Devise Development
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  #letter_opener in development enviroment
+  config.action_mailer.delivery_method = :letter_opener
+
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.

@@ -235,7 +235,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        'ui-sans-serif',
+        'Roboto',
         'system-ui',
         '-apple-system',
         'BlinkMacSystemFont',

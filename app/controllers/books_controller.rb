@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_book, only: %i[ show edit update destroy ]
   before_action :set_authors, only: %i[new edit]
 
