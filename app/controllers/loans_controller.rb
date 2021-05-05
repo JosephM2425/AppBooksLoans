@@ -1,6 +1,7 @@
 class LoansController < ApplicationController
   before_action :authenticate_user!
   before_action :set_loan, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
 
   # GET /loans or /loans.json
   def index
@@ -26,11 +27,9 @@ class LoansController < ApplicationController
 
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to @loan, notice: "Loan was successfully created." }
-        format.json { render :show, status: :created, location: @loan }
+        format.html { redirect_to books_path, notice: "Book added to your library" }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @loan.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <% if user_signed_in? %>
-  <html class=" <%= current_user.dark? && 'dark'%> ">
+  <html class="<%= html_class current_user %>">
 <% else %>
   <html>
 <% end %>
@@ -20,8 +20,8 @@
   <body class="dark:bg-gray-800">
     <%= render 'partials/navbar' %>
     <div class="container mx-auto">
-      <%= notice %></p>
-      <%= alert %></p>
+      <span class="dark:text-white"><%= notice %></span>
+      <span class="dark:text-white"><%= alert %></span>
       <%= yield %>
     </div>
   </body>

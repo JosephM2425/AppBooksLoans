@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @users = User.all
+  end
+
   def edit
   end
 
@@ -9,6 +13,20 @@ class UsersController < ApplicationController
       redirect_back(fallback_location: root_path)
     else 
       redirect_to profile_path, notice: "values already exists"
+    end
+  end
+
+  def change_theme
+    if current_user.light?
+      current_user.dark!
+      @user_ui = { color: 'dark', icon: '' }
+    else 
+      current_user.light!
+      @user_ui = { color: 'light', icon: '' }
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 

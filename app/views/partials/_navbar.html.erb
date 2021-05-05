@@ -10,6 +10,20 @@
       <% if user_signed_in? %>
         <%= link_to 'My Active loans', my_loans_path, class:"mr-5 hover:text-gray-900" %>
         <%= link_to 'Books', books_path, class:"mr-5 hover:text-gray-900" %>
+        
+        <% if current_user.admin? %>
+          <div class="dropdown inline-block relative">
+            <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+              <span class="mr-1">Menu Admin</span>
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+            </button>
+            <ul class="dropdown-menu static hidden text-gray-700 pt-1">
+              <li> <%= link_to 'Books', books_path, class:"rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %> </li>
+              <li> <%= link_to 'Authors', authors_path, class:"rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %> </li>    
+              <li> <%= link_to 'Loans', loans_path, class:"rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %> </li>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
     </nav>    
     <% if user_signed_in? %>
@@ -19,14 +33,14 @@
             <div class="rounded-full w-10 h-10 m-1">
               <% if current_user.avatar.attached? %>
                 <%= image_tag url_for(current_user.avatar) %>
-              <% else  %>
+              <% else %>
                 <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg">
               <% end %>
             </div>
             <%= link_to 'Profile', profile_path, class:"btn btn-link btn-active dark:text-white" %>
           </div>
         </div>
-        <%= link_to 'SwitchTheme', user_path(id: current_user, theme: :dark), method: :patch, remote: true ,class:"m-5 hover:text-gray-900" %>
+        <%= link_to 'SwitchTheme', change_theme_users_path, method: :patch, remote: true, class:"m-5 hover:text-gray-900" %>
     <% else %>
          <%= link_to 'Sign In', new_user_session_path, class:" inline-flex items-center bg-black text-white  border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0" %>
     <% end %>

@@ -13,23 +13,23 @@
         </div>
       <% end %>
 
-      <div class="field">
-        <%= form.label :fullName %>
-        <%= form.text_field :fullName %>
+      <div class="form-control">
+        <%= form.label :fullName, class:"dark:text-white" %>
+        <%= form.text_field :fullName, class:"input input-bordered h-8" %>
       </div>
 
-      <div class="field">
-        <%= form.label :description %>
-        <%= form.text_area :description %>
+      <div class="form-control">
+        <%= form.label :description, class:"dark:text-white" %>
+        <%= form.text_area :description, class:"textarea h-24 textarea textarea-bordered" %>
       </div>
 
-      <div class="field">
-        <%= form.label :country %>
-        <%= form.text_field :country %>
+      <div class="form-control">
+        <%= form.label :country, class:"dark:text-white" %>
+        <%= form.text_field :country, class:"input input-bordered h-8" %>
       </div>
 
-      <div class="actions">
-        <%= form.submit %>
+      <div class="actions form-control pt-5">
+        <%= form.submit 'Create Author', class:"btn btn-primary h-8" %>
       </div>
     <% end %>
   </div>

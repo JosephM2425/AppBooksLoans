@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_book, only: %i[ show edit update destroy ]
   before_action :set_authors, only: %i[new edit]
+  load_and_authorize_resource
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.where.not(id: current_user.loans.current_loans.pluck(:book_id))
     @loan = Loan.new
   end
 
@@ -20,6 +21,10 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+  end
+
+  def search
+    @books = Book.where("title LIKE ?", "%" + params[:q] + "%")
   end
 
   # POST /books or /books.json
@@ -71,6 +76,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :description, :publisher, :edition, :isbn, :quantity, :pdf_book, :cover, author_ids: [])
+      params.require(:book).permit(:title, :description, :publisher, :edition, :q, :isbn, :quantity, :pdf_book, :cover, author_ids: [])
     end
 end

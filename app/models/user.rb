@@ -15,9 +15,4 @@ class User < ApplicationRecord
   def fullName()
     return self.firstName + " " + self.lastName
   end
-
-  def active_admin?
-    role == :admin
-  end
-
 end

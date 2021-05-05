@@ -1,11 +1,6 @@
-<form action="/search">
-  <div class="px-5">
-      <input type="text" name="q" class="input input-bordered h-8 dark:text-black" placeholder="Search">
-      <button type="submit" class="bg-black border-0 py-1 px-4 text-white focus:outline-none rounded text-base mt-4 md:mt-0 mx-3 h-8">Search</button>
-  </div>
-</form>
-<br>
-<div class="dark:text-white">
+<div>
+    <h1 class="dark:text-white">Results: </h1>
+    <div class="dark:text-white">
   <% @books.each do |book| %>
     <div class="card lg:card-side  bordered py-2">
       <div class="bg-cover lg:h-26 lg:w-56 flex-none image-full">
@@ -58,10 +53,5 @@
         </div>
     </div>
   <% end %>
-
-
-  <div class="btn-group sm:w-1/2 ">
-    <button class="btn btn-secondary">Previous Page</button> 
-    <button class="btn btn-secondary">Next Page</button>
-  </div>
+</div>
 </div>

@@ -1,13 +1,26 @@
 <% if @loan.user == current_user and  @loan.active == true %>
 
-    <div style="position: relative; width: 100%; display:none">
+    <!--- !>
+
+    <div style="position: relative; width: 100%;">
     <div style="width: 100%; display:none; height: 45px; position: absolute;" class="bg-white dark:bg-gray-800">
     </div>
-         <%# <embed class="container h-screen" src="<%= url_for(@loan.book.pdf_book)%>#toolbar=0"  type="application/pdf"></embed>  %>
+         <embed class="container h-screen" src="<%= url_for(@loan.book.pdf_book)%>#toolbar=0"  type="application/pdf"></embed> 
     </div>
-    
-    <embed class="container h-screen" src="<%= url_for(@loan.book.pdf_book)%>#toolbar=0"  type="application/pdf"></embed> 
 
+    <!-->
+    <canvas id="my_canvas"></canvas>
+
+    <script>
+        pdfjsLib.getDocument('<%= url_for(@loan.book.pdf_book) %>').then(doc => {
+            doc.getPage(1).then(page=> {
+                
+            })
+        })
+        
+    </script>
+
+    
 <% else %>
     <div class="alert alert-error">
         <div class="flex-1">
