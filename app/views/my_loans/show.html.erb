@@ -1,25 +1,89 @@
 <% if @loan.user == current_user and  @loan.active == true %>
 
-    <!--- !>
-
-    <div style="position: relative; width: 100%;">
-    <div style="width: 100%; display:none; height: 45px; position: absolute;" class="bg-white dark:bg-gray-800">
-    </div>
-         <embed class="container h-screen" src="<%= url_for(@loan.book.pdf_book)%>#toolbar=0"  type="application/pdf"></embed> 
-    </div>
-
-    <!-->
-    <canvas id="my_canvas"></canvas>
+    <button id="prev" class="btn btn-primary"> Previous </button>
+    <button id="next" class="btn btn-primary"> Next </button>
+    <button id="zoomIn" class="btn btn-primary"> ++ </button>
+    <button id="zoomOut" class="btn btn-primary"> -- </button>
+    <span> Page: <span id="page_num"></span> | <span id="page_count"></span> </span>
+    
+    <canvas id="pdf_canvas" class="mx-auto"></canvas>
 
     <script>
-        pdfjsLib.getDocument('<%= url_for(@loan.book.pdf_book) %>').then(doc => {
-            doc.getPage(1).then(page=> {
-                
-            })
-        })
-        
-    </script>
+        var pdfDoc = null,
+        pageNum = 1, 
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 1.5,
+        canvas = document.getElementById('pdf_canvas')
+        ctx = canvas.getContext('2d')
 
+        function renderPage(num) {
+            pageRendering = true
+            pdfDoc.getPage(num).then((page)=> {
+                var viewport = page.getViewport({scale: scale});
+                canvas.height = viewport.height
+                canvas.width = viewport.width
+
+                var renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport,
+                }
+                var renderTask = page.render(renderContext)
+                renderTask.promise.then(()=>{
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending)
+                        pageNumPending = null;
+                    }
+                })
+            })
+            document.getElementById('page_num').textContent = num;
+        }
+
+        function taskrenderPage(num) {
+            if(pageRendering){
+                pageNumPending = num
+            }else{
+                renderPage(num)
+            }
+        }
+
+        function onPrevPage() {
+            if(pageNum <= 1 ){
+                return
+            }
+            pageNum--;
+            taskrenderPage(pageNum)
+        }
+        document.getElementById('prev').addEventListener('click', onPrevPage)
+
+        function onNextPage() {
+            if(pageNum >= pdfDoc.numPages ){
+                return
+            }
+            pageNum++;
+            taskrenderPage(pageNum)
+        }
+        document.getElementById('next').addEventListener('click', onNextPage)
+
+        function zoomOut() {
+            scale -= 0.1
+            renderPage(pageNum)
+        }
+        document.getElementById('zoomOut').addEventListener('click', zoomOut)
+
+        function zoomIn() {
+            scale += 0.1
+            renderPage(pageNum)
+        }
+        document.getElementById('zoomIn').addEventListener('click', zoomIn)
+
+        pdfjsLib.getDocument('<%= url_for(@loan.book.pdf_book) %>').promise.then((doc) => {
+            pdfDoc = doc
+            document.getElementById('page_count').textContent = doc.numPages;
+            renderPage(pageNum)
+        })
+    </script>
     
 <% else %>
     <div class="alert alert-error">

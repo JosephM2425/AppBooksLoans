@@ -7,6 +7,10 @@ class MyLoansController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.js 
+    end
   end
 
   private
