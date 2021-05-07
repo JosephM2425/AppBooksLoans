@@ -19,10 +19,10 @@ class UsersController < ApplicationController
   def change_theme
     if current_user.light?
       current_user.dark!
-      @user_ui = { color: 'dark', icon: '' }
+      @user_ui = { color: 'dark', icon: 'fas fa-sun' }
     else 
       current_user.light!
-      @user_ui = { color: 'light', icon: '' }
+      @user_ui = { color: 'light', icon: 'fas fa-moon' }
     end
 
     respond_to do |format|

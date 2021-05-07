@@ -12,8 +12,8 @@
             <h2 class="card-title"> <%= loan.book.title %> </h2> 
             <p> <%= loan.book.description %> </p> 
             <div class="justify-center card-actions">
-            <%= link_to 'READ' , my_loan_path(loan), class:"btn btn-secondary" %>
-            <p>Tiempo restante</p>
+                <%= link_to 'READ', my_loan_path(loan), class:"btn btn-secondary read_buttons" %>
+                <p>Tiempo restante</p>
             </div>
         </div>
     </div>

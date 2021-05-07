@@ -1,13 +1,14 @@
+<div class="dark:text-white">
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>User:</strong>
-  <%= @loan.user_id %>
+  <%= @loan.user.fullName %>
 </p>
 
 <p>
   <strong>Book:</strong>
-  <%= @loan.book_id %>
+  <%= @loan.book.title %>
 </p>
 
 <p>
@@ -27,3 +28,4 @@
 
 <%= link_to 'Edit', edit_loan_path(@loan) %> |
 <%= link_to 'Back', loans_path %>
+</div>

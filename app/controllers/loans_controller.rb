@@ -15,10 +15,14 @@ class LoansController < ApplicationController
   # GET /loans/new
   def new
     @loan = Loan.new
+    @users = User.all
+    @books = Book.all
   end
 
   # GET /loans/1/edit
   def edit
+    @users = User.all
+    @books = Book.all
   end
 
   # POST /loans or /loans.json

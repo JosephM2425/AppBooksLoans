@@ -1,3 +1,5 @@
+<div class="pt-5 mb-8 font-bold 2xl:w-1/2 mx-auto items-center shadow-2xl">
+<div class="pb-8 pl-8 pr-8 2xl:w-auto sm:w-48 ">
 <%= form_with(model: loan) do |form| %>
   <% if loan.errors.any? %>
     <div id="error_explanation">
@@ -11,32 +13,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="form-control pb-3">
+    <%= form.label :user_id, 'User:', class:"dark:text-white"%>
+    <%= form.select :user_id, @users.map { |a| [a.fullName, a.id ]}%>
+  </div>
+
+  <div class="form-control pb-3">
+    <%= form.label :book_id, 'Libro', class:"dark:text-white" %>
+    <%= form.select :book_id, @books.map {|a| [a.title, a.id]}%>
+  </div>
+
+  <div class="field pb-3">
+    <%= form.label :start_date, class:"dark:text-white" %>
+    <%= form.date_select :start_date, 
+                  {:order => [:day, :month, :year] ,
+                  :start_year => 2021,
+                  :end_year => 2021},
+                  {:class => "select select-bordered dark:text-black"} %>
+  </div>
+
+  <div class="field pb-3">
+    <%= form.label :end_date , class:"dark:text-white"%>
+    <%= form.date_select :end_date, 
+                  {:order => [:day, :month, :year] ,
+                  :start_year => 2021,
+                  :end_year => 2021},
+                  {:class => "select select-bordered dark:text-black"}
+    %>
   </div>
 
   <div class="field">
-    <%= form.label :book_id %>
-    <%= form.text_field :book_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :active %>
+    <%= form.label :active, class:"dark:text-white" %>
     <%= form.check_box :active %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-control pt-5">
+    <%= form.submit 'Create Loan', class:"btn btn-primary h-8" %>
   </div>
 <% end %>
+</div>
+</div>

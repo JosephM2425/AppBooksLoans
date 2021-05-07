@@ -1,2 +1,4 @@
 var html = document.querySelector('html')
 html.setAttribute('class', '<%= @user_ui[:color] %>')
+var icon = document.querySelector('[data-target="icon-ui"]')
+icon.className = '<%= @user_ui[:icon] %>'

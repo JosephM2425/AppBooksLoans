@@ -1,19 +1,19 @@
-<% if @loan.user == current_user and  @loan.active == true %>
-
+<div class="dark:text-white font-bold text-center py-2 ">
     <button id="prev" class="btn btn-primary"> Previous </button>
     <button id="next" class="btn btn-primary"> Next </button>
-    <button id="zoomIn" class="btn btn-primary"> ++ </button>
-    <button id="zoomOut" class="btn btn-primary"> -- </button>
+    <button id="zoomIn" class="btn btn-primary"> + </button>
+    <button id="zoomOut" class="btn btn-primary"> - </button>
     <span> Page: <span id="page_num"></span> | <span id="page_count"></span> </span>
-    
-    <canvas id="pdf_canvas" class="mx-auto"></canvas>
+</div>
 
-    <script>
+<canvas id="pdf_canvas" class="mx-auto"></canvas>
+
+<script>
         var pdfDoc = null,
         pageNum = 1, 
         pageRendering = false,
         pageNumPending = null,
-        scale = 1.5,
+        scale = 1.2,
         canvas = document.getElementById('pdf_canvas')
         ctx = canvas.getContext('2d')
 
@@ -83,15 +83,4 @@
             document.getElementById('page_count').textContent = doc.numPages;
             renderPage(pageNum)
         })
-    </script>
-    
-<% else %>
-    <div class="alert alert-error">
-        <div class="flex-1">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current"><!----> <!----> <!----> <!----> 
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
-            </svg> 
-            <label>No tiene Acceso a este Libro</label>
-        </div>
-    </div>
-<% end %>
+</script>
