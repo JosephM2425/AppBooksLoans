@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'home/landing'
+  
   resources :my_loans, only: %i[ index show ]
   resources :loans
 
@@ -14,8 +14,16 @@ Rails.application.routes.draw do
       patch 'change_theme', to: 'users#change_theme'
     end
   end
-
+  
   get 'profile', to: 'users#edit'
 
-  root 'static#index'
+  devise_scope :user do
+    authenticated :user do
+      root 'static#index', as: :authenticated_root
+    end
+
+    unauthenticated :user do
+      root 'home#landing', as: :unauthenticated_root
+    end
+  end
 end

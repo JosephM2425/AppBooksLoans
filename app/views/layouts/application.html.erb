@@ -18,7 +18,11 @@
   </head>
 
   <body class="dark:bg-gray-800">
-    <%= render 'partials/navbar' %>
+    <% if user_signed_in? %>
+    <%= render 'partials/authenticated_navbar' %>
+    <% else %>
+    <%= render 'partials/unauthenticated_navbar' %>
+    <% end %>
     <div class="container mx-auto">
       
       <% if notice %>

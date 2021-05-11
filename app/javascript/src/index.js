@@ -1,17 +1,18 @@
 export default function index(){
-    // return console.log('Hola desde el index.js');
+    const authors = document.querySelector('#authors')
+    if (!authors) return null
+
     fetch('/authors', {
         method: 'GET',
         headers: {'Accept': 'application/json'}
     })
     .then(response => response.json())
     .then(authors => renderAuthors(authors))
-    .then(authors => document.querySelector('#authors tbody').innerHTML = authors.join('')  )
+    .then(authors_arr => authors.querySelector('tbody').innerHTML = authors_arr.join('')  )
 }
 
 
 function renderAuthors(authors) {
-    if (!authors) return null
     return authors.map(author => createHTML(author))
 }
 

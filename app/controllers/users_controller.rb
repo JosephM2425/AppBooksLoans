@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: authenticated_root_path)
     else 
       redirect_to profile_path, notice: "values already exists"
     end

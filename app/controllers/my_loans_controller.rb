@@ -12,7 +12,7 @@ class MyLoansController < ApplicationController
       if @loan.viewable_by?(current_user)
         format.html
       else
-        format.html { redirect_to root_path, notice: "not access allowed" }
+        format.html { redirect_to authenticated_root_path, notice: "not access allowed" }
       end
     end
   end
