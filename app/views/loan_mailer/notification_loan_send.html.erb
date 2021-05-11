@@ -1,1 +1,26 @@
-<h1>El libro que solicitaste fue: <%= @loan.book.title %></h1>
+<h1 class="text-center">El libro que solicitaste fue: <%= @loan.book.title %></h1>
+<h3 class="text-center"> El prestamo inicia el: <%= @loan.start_date %> </h3>
+<h3 class="text-center"> El prestamo terminal el: <%= @loan.end_date %> </h3>
+
+<% if @loan.book.cover.attached? %>
+  <%= image_tag(@loan.book.cover) %>
+<% else %>
+  <img src="https://picsum.photos/id/1005/300/400">
+<% end %>
+<p> Authors: 
+  <% @loan.book.authors.each do |author| %>
+    <%= author.fullName %>
+  <% end %>
+</p>
+<p>
+  <strong>Publisher:</strong>
+  <%= @loan.book.publisher %>
+</p>
+<p>
+  <strong>Edition:</strong>
+  <%= @loan.book.edition %>
+</p>
+<p>
+  <strong>Isbn:</strong>
+  <%= @loan.book.isbn %>
+</p>

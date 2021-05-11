@@ -19,7 +19,12 @@ import destroy from '../src/destroy'
 
 document.addEventListener("turbolinks:load", function() {
 
-    //index()
+    document.addEventListener('click', function(e){
+        if(e.target.matches('.author_refresh')){
+            e.preventDefault()
+            index(e)
+        }
+    })
 
     document.addEventListener('click', function(e){
         if(e.target.matches('.author_delete')){

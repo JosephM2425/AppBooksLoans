@@ -10,7 +10,7 @@ class Ability
       can :manage, :all
     elsif user.user?
       can :create, Loan
-      can :index, Loan 
+      #can :index, Loan 
       can :read, Book
       can :index, Book
       #can :manage, :all
