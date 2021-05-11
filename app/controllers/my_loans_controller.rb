@@ -8,11 +8,9 @@ class MyLoansController < ApplicationController
   end
 
   def show
-
     respond_to do |format|
       if @loan.viewable_by?(current_user)
         format.html
-        format.js
       else
         format.html { redirect_to root_path, notice: "not access allowed" }
       end

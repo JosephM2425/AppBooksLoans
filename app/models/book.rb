@@ -5,6 +5,8 @@ class Book < ApplicationRecord
 
     has_one_attached :pdf_book
     has_one_attached :cover
+
+    self.per_page = 2
     
     # Sacar el archivo y guardarlo en la carpeta tmp, para obtener el path del archivo
     def process_attachment

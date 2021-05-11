@@ -1,10 +1,12 @@
 <form action="/search">
-  <div class="px-5">
+  <div class="px-5 pb-3">
       <input type="text" name="q" class="input input-bordered h-8 dark:text-black" placeholder="Search">
-      <button type="submit" class="bg-black border-0 py-1 px-4 text-white focus:outline-none rounded text-base mt-4 md:mt-0 mx-3 h-8">Search</button>
+      <button type="submit" class="bg-black border-0 py-1 px-4 text-white focus:outline-none rounded text-base mt-4 md:mt-0 mx-3 h-8">Search</button>  
+      <% if current_user.admin? %>
+        <%= link_to 'New Book', new_book_path, class:"btn btn-primary" %>
+      <% end %>
   </div>
 </form>
-<br>
 <div class="dark:text-white">
   <% @books.each do |book| %>
     <div class="card lg:card-side  bordered py-2">
@@ -58,10 +60,12 @@
         </div>
     </div>
   <% end %>
-
-
+  
+  <%= will_paginate @posts %>
+  <!-- 
   <div class="btn-group sm:w-1/2 ">
     <button class="btn btn-secondary">Previous Page</button> 
     <button class="btn btn-secondary">Next Page</button>
   </div>
+  -->
 </div>

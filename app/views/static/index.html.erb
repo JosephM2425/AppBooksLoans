@@ -1,7 +1,14 @@
 <!-- component -->
-<div class="flex py-24 justify-center dark:text-white">
+<div class="flex py-2 justify-center dark:text-white">
     <div class="p-12 text-center max-w-2xl">
         <div class="md:text-3xl text-3xl font-bold">Bienvenido <%= current_user.fullName %></div>
         <div class="text-xl font-normal mt-4">Ve a la pestaña de libros para poder rentar algunos 😄 </div>
+
+        <% if current_user.admin? %>
+            <%= column_chart @loans_by_month %>
+            <br>
+            <%=  pie_chart @books %>
+        <% end %>
+        
     </div>
 </div>

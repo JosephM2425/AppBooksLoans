@@ -19,7 +19,7 @@
       <% @loans.each do |loan| %>
         <tr>
           <td class="border px-8 py-4">
-            <%= image_tag url_for(loan.user.avatar), class:"h-10 w-10 rounded-full lg:mx-8" %>
+            <%# image_tag url_for(loan.user.avatar), class:"h-10 w-10 rounded-full lg:mx-8" %>
             <%= loan.user.firstName + " " + loan.user.lastName %>
           </td>
           <td class="border px-8 py-4"> <a href="/books/<%= loan.book.id %>"> <%= loan.book.title %> </a> </td>

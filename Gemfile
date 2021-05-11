@@ -44,6 +44,7 @@ group :development do
   gem 'spring'
   
   gem "letter_opener"
+  gem 'faker'
 end
 
 group :test do
@@ -59,4 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'cancancan'
+gem 'chartkick'
+gem 'groupdate'
+gem 'will_paginate', '~> 3.1.0'
 gem 'aws-sdk-s3'

@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_book, only: %i[ show edit update destroy ]
   before_action :set_authors, only: %i[new edit]
   load_and_authorize_resource
 
   # GET /books or /books.json
   def index
-    @books = Book.where.not(id: current_user.loans.current_loans.pluck(:book_id))
+    @books = Book.paginate(page: params[:page]).where.not(id: current_user.loans.current_loans.pluck(:book_id))
     @loan = Loan.new
   end
 

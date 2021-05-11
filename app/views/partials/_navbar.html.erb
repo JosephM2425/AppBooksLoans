@@ -1,11 +1,26 @@
 <header class="text-gray-600  body-font dark:text-white">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ">
-    <a class="flex title-font font-medium items-center text-gray-900 dark:text-white  mb-4 md:mb-0">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+    <%= link_to root_path, class:"flex title-font font-medium items-center text-gray-900 dark:text-white  mb-4 md:mb-0" do%>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-white p-2 rounded-full" viewBox="0 0 64 64" aria-labelledby="title"
+      aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <title>Textbook</title>
+        <desc>A color styled icon from Orion Icon Library.</desc>
+        <path data-name="layer2"
+        d="M10 10v44a8 8 0 0 0 8 8h36V18H18a8 8 0 0 1-8-8" fill="#49bcff"></path>
+        <path data-name="layer1" d="M53 2H18a8 8 0 0 0 0 16h35z" fill="#fff"></path>
+        <path data-name="opacity" d="M18 2a8 8 0 0 0-7.6 10.5A8 8 0 0 1 18 7h35V2z"
+        fill="#000064" opacity=".1"></path>
+        <path data-name="opacity" d="M10 10v44a8 8 0 0 0 8 8V18a8 8 0 0 1-8-8z"
+        fill="#000064" opacity=".15"></path>
+        <path data-name="layer1" fill="#fff" d="M22 26h20v16H22z"></path>
+        <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+        stroke-miterlimit="10" stroke-width="2" d="M18 10h31m5-8H18a8 8 0 0 0 0 16h36v44H18a8 8 0 0 1-8-8V10"
+        stroke-linejoin="round"></path>
+        <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+        stroke-miterlimit="10" stroke-width="2" d="M22 26h20v16H22zM53 2v16" stroke-linejoin="round"></path>
       </svg>
       <span class="ml-3 text-xl">Project Joseph Murillo</span>
-    </a>
+    <% end %>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center"> 
       <% if user_signed_in? %>
         <%= link_to 'My Active loans', my_loans_path, class:"mr-5 hover:text-gray-900" %>

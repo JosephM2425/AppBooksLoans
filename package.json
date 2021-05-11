@@ -7,6 +7,8 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
     "autoprefixer": "^9.8.6",
+    "chartkick": "^4.0.4",
+    "highcharts": "^9.1.0",
     "postcss": "^7.0.35",
     "tailwindcss": "^2.0.1-compat",
     "turbolinks": "^5.2.0"

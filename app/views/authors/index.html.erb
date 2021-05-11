@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 <h1>Authors</h1>
 
-<table>
+<table id="authors">
   <thead>
     <tr>
       <th>Fullname</th>
@@ -13,16 +13,7 @@
   </thead>
 
   <tbody>
-    <% @authors.each do |author| %>
-      <tr>
-        <td><%= author.fullName %></td>
-        <td><%= author.description %></td>
-        <td><%= author.country %></td>
-        <td><%= link_to 'Show', author %></td>
-        <td><%= link_to 'Edit', edit_author_path(author) %></td>
-        <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    
   </tbody>
 </table>
 

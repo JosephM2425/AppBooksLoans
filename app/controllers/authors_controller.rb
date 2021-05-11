@@ -6,6 +6,10 @@ class AuthorsController < ApplicationController
   # GET /authors or /authors.json
   def index
     @authors = Author.all
+    respond_to do |format|
+      format.html
+      format.json {render json: @authors.to_json}
+    end
   end
 
   # GET /authors/1 or /authors/1.json
@@ -51,10 +55,9 @@ class AuthorsController < ApplicationController
 
   # DELETE /authors/1 or /authors/1.json
   def destroy
-    @author.destroy
+    @author = Author.find(params[:id])
     respond_to do |format|
-      format.html { redirect_to authors_url, notice: "Author was successfully destroyed." }
-      format.json { head :no_content }
+      format.json {render json: @author.to_json}
     end
   end
 
@@ -66,6 +69,6 @@ class AuthorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def author_params
-      params.require(:author).permit(:fullName, :description, :country)
+      params.require(:author).permit(:fullName, :description, :country, :id)
     end
 end

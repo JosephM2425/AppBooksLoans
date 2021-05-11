@@ -8,10 +8,17 @@ class Ability
 
     if user.admin?
       can :manage, :all
-    else
+    elsif user.user?
+      can :create, Loan
+      can :index, Loan 
       can :read, Book
-      can :search, :all
+      can :index, Book
+      #can :manage, :all
+    else
+
     end
+
+    
 
     # Define abilities for the passed in user here. For example:
     #
