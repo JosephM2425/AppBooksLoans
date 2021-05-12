@@ -44,7 +44,6 @@ group :development do
   gem 'spring'
   
   gem "letter_opener"
-  gem 'faker'
 end
 
 group :test do
@@ -64,3 +63,4 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'will_paginate', '~> 3.1.0'
 gem 'aws-sdk-s3'
+gem 'faker'
