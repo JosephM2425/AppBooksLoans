@@ -1,24 +1,28 @@
-# README
+# AppBooksLoans
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicación web para el prestamo de libros con visor integrado ideal para centros educativos
 
-Things you may want to cover:
+## Pasos Iniciales
 
-* Ruby version
+Tener Ruby instalado en sus sistema Operativo, ademas de la gem Rails y Postgresql
+<br>
+https://guides.rubyonrails.org/getting_started.html
 
-* System dependencies
+### Requisitos
 
-* Configuration
+* Ruby
+* Rails
+* Postgresql
 
-* Database creation
+### Iniciando el servidor
 
-* Database initialization
+```
+git clone https://github.com/JosephM2425/AppBooksLoans.git
+cd app_book_repository
+bundle install
+rails db:create db:migrate db:seed
+rails s
+```
+## Autor
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* **Joseph Murillo** - (https://www.linkedin.com/in/joseph-murillo-810640174/)
