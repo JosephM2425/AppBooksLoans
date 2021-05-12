@@ -25,6 +25,7 @@ class BooksController < ApplicationController
 
   def search
     @books = Book.where("title LIKE ?", "%" + params[:q] + "%")
+    @loan = Loan.new
   end
 
   # POST /books or /books.json
