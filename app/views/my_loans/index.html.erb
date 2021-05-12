@@ -13,7 +13,12 @@
             <p> <%= loan.book.description %> </p> 
             <div class="justify-center card-actions">
                 <%= link_to 'READ', my_loan_path(loan), class:"btn btn-secondary read_buttons" %>
-                <p>Tiempo restante</p>
+                <p>Time remaining
+                    <br> 
+                    <span class="font-bold">
+                        <%= distance_of_time_in_words(loan.end_date, Time.now, only: :days) %>
+                    </span>
+                </p>
             </div>
         </div>
     </div>
